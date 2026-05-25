@@ -1,0 +1,7 @@
+models/checkpoints/*.pt
+models/onnx/*.data
+models/checkpoints/
+models/onnx/*.data
+models/onnx/*.onnx
+models/torchscript/
+data/
