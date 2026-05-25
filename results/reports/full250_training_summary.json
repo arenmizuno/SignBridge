@@ -1,0 +1,18 @@
+{
+  "n_classes": 250,
+  "models_trained": [
+    "StrongCNN",
+    "StrongCNN_GRU",
+    "StrongTransformer",
+    "StrongTCN"
+  ],
+  "best_model": "StrongTransformer",
+  "best_checkpoint": "/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_full250_StrongTransformer.pt",
+  "onnx_path": "/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/sign_model_full250_StrongTransformer.onnx",
+  "test_top1": 0.6795228495392748,
+  "test_top5": 0.8621068545567092,
+  "test_top10": 0.8975772844847812,
+  "label_map_path": "/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/full250_label_map.json",
+  "ablation_path": "/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/ablation_full250_four_models.csv",
+  "classification_report_path": "/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/classification_report_full250_StrongTransformer.txt"
+}

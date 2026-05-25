@@ -1,0 +1,23 @@
+============================================================
+SIGNBRIDGE PILOT-25 TRAINING SUMMARY
+============================================================
+
+Number of signs: 25
+Signs: outside, book, another, sad, empty, drawer, dirty, can, room, blue, please, yourself, uncle, make, better, napkin, have, apple, any, bird, dad, doll, kitty, noisy, yucky
+
+Train samples: 5,611
+Val samples: 927
+Test samples: 1,181
+
+Best model: CNN
+Best model test top-1: 83.14%
+Best model test top-3: 94.88%
+Best model test top-5: 97.45%
+
+Files saved:
+  pilot25_label_map.json
+  class_weights_25.npy
+  ablation_pilot25_all_models.csv
+  sign_model_pilot25_CNN.onnx
+
+============================================================

@@ -1,0 +1,4 @@
+Split,Samples,Sequence Length,Features
+Train,55642,96,708
+Validation,9291,96,708
+Test,11826,96,708

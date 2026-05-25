@@ -1,0 +1,8 @@
+{
+  "n_classes": 250,
+  "train_samples": 55642,
+  "val_samples": 9291,
+  "test_samples": 11826,
+  "sequence_length": 96,
+  "n_features": 708
+}

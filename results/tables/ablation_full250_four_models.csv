@@ -1,0 +1,5 @@
+Model,Best Val Top-1 (%),Test Top-1 (%),Test Top-5 (%),Test Top-10 (%),Test Loss,Train Time (min),Params,Checkpoint
+StrongTransformer,59.1,67.95,86.21,89.76,1.9149,154.77,6077690,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_full250_StrongTransformer.pt
+StrongTCN,58.06,66.26,85.69,90.04,1.9563,44.99,1269370,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_full250_StrongTCN.pt
+StrongCNN,58.33,65.19,86.07,90.51,1.9732,43.69,1269370,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_full250_StrongCNN.pt
+StrongCNN_GRU,57.6,62.97,83.65,88.52,2.1159,133.82,5548666,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_full250_StrongCNN_GRU.pt

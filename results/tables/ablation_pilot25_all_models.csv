@@ -1,0 +1,11 @@
+Model,Best Val Top-1 (%),Test Top-1 (%),Test Top-3 (%),Test Top-5 (%),Test Loss,Train Time (min),Params,Checkpoint
+CNN,74.84,83.14,94.88,97.45,0.5854,1.27,390937,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_CNN.pt
+TCN,74.11,81.51,94.31,97.27,0.7288,1.71,1767961,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_TCN.pt
+CNN_GRU,73.79,81.34,93.96,96.61,0.8002,1.4,1511193,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_CNN_GRU.pt
+Transformer,70.78,80.26,92.42,95.38,0.7896,1.89,1794329,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_Transformer.pt
+BiLSTM_Attention,72.04,79.55,93.08,96.13,0.7968,1.62,1992730,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_BiLSTM_Attention.pt
+GRU,69.0,78.89,91.46,95.03,0.8354,2.09,2680345,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_GRU.pt
+CNN_Transformer,74.31,78.8,92.14,95.46,0.8081,1.77,1793561,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_CNN_Transformer.pt
+CNN_LSTM,72.87,78.24,92.4,94.88,0.8952,1.58,1774361,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_CNN_LSTM.pt
+LSTM,66.81,75.11,90.44,94.88,1.0278,2.75,3569177,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_LSTM.pt
+MLP,51.68,54.06,76.87,85.97,1.5963,1.42,34939417,/content/drive/MyDrive/UChicago/Masters/Spring/ML2/SignBridge/data/raw/arthur/signbridge_all250/best_pilot25_MLP.pt
