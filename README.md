@@ -48,7 +48,6 @@ SignBridge/
 ├── data/
 │   ├── external/
 │   └── processed/
-│   
 │
 ├── models/
 │   ├── checkpoints/
@@ -327,8 +326,5 @@ Live Translation UI
 ## Deployment
 - ONNX Runtime
 - TorchScript
-
----
-
 
 ---
