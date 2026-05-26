@@ -203,15 +203,16 @@ results/tables/
 ## 3. Partial Dataset Training
 
 Notebook:
-```text
 src/02_Partial_Model_Training.ipynb
-```
 
-Used for:
-- Faster experimentation
-- Architecture comparison
+This notebook was used as an experimental benchmarking environment before full-scale training on the complete 250-sign dataset.
+
+The notebook focuses on:
+- Rapid architecture experimentation
 - Hyperparameter tuning
-- Stability testing
+- Stability and convergence testing
+- Comparing temporal sequence modeling approaches
+- Evaluating computational efficiency before full training
 
 Models explored:
 - MLP
@@ -223,16 +224,78 @@ Models explored:
 - CNN + Transformer
 - TCN
 
+Training setup:
+- Landmark sequences padded/truncated to 96 frames
+- Input dimensionality of 708 features per frame
+- Data augmentation using temporal stretching, Gaussian noise, and frame dropout
+- Weighted loss functions to reduce class imbalance effects
+- Evaluation using Top-1, Top-3, and Top-5 accuracy
+
+Model comparison summary:
+
+| Model | Test Accuracy (Top 1) | Key Findings |
+|---|---:|---|
+| CNN | **83.1%** | Best overall performance with strong temporal-spatial feature extraction |
+| CNN + GRU | 81.3% | Stable hybrid model combining convolutional and recurrent learning |
+| TCN | 81.5% | Efficient sequence modeling with strong temporal performance |
+| Transformer | 80.3% | Competitive global attention modeling but higher complexity |
+| BiLSTM + Attention | 79.6% | Improved recurrent modeling with attention mechanisms |
+| GRU | 78.9% | Strong temporal modeling with fewer parameters than LSTM |
+| CNN + Transformer | 78.8% | Effective hybrid attention architecture but less stable |
+| CNN + LSTM | 78.2% | Good sequential learning but slower training |
+| LSTM | 75.1% | Captured temporal structure but required larger parameter counts |
+| MLP | 54.1% | Poor performance due to lack of temporal sequence modeling |
+
+Key findings:
+- CNN-based architectures consistently outperformed pure recurrent models, indicating strong local temporal-spatial pattern learning from landmark sequences
+- The standalone MLP performed significantly worse than sequence-aware architectures, confirming the importance of temporal modeling for ASL recognition
+- GRU and LSTM models captured temporal dependencies effectively but required substantially larger parameter counts and longer training time
+- Hybrid architectures such as CNN + GRU improved stability and accuracy by combining convolutional feature extraction with recurrent temporal modeling
+- TCN models achieved strong performance while maintaining efficient parallel sequence processing and lower computational cost compared to recurrent architectures
+- Transformer-based models demonstrated competitive performance and improved global temporal attention, though they required additional tuning and regularization for stable convergence
+
+Based on the partial training experiments, the following architectures were prioritized for full-scale training:
+
+| Priority | Model | Reason |
+|---|---|---|
+| 1 | CNN | Highest overall accuracy with efficient training and deployment |
+| 2 | CNN + GRU | Strong hybrid temporal modeling and stable convergence |
+| 3 | TCN | High performance with efficient sequence processing |
+| 4 | Transformer | Strong attention-based modeling for long-range temporal relationships |
+
+These architectures were further explored in:
+
+src/03_Full_Model_Training.ipynb
+
+Outputs generated:
+- Training history logs
+- Validation accuracy comparisons
+- Ablation study tables
+- Confusion matrices
+- Model checkpoints
+
+Outputs are saved into:
+
+models/checkpoints/
+models/logs/
+results/graphs/
+results/tables/
+results/reports/
+
 ---
 
 ## 4. Full Dataset Training
 
 Notebook:
-```text
 src/03_Full_Model_Training.ipynb
-```
 
-Final large-scale training on the complete 250-sign dataset.
+This notebook performs full-scale training on the complete 250-sign SignBridge dataset using the strongest architectures selected from the partial-model experiments.
+
+The notebook focuses on:
+- Large-scale training across all 250 ASL sign classes
+- Comparing deeper versions of the selected architectures
+- Evaluating accuracy, parameter count, training time, and model stability
+- Identifying the best candidate architecture for deployment-oriented refinement
 
 Primary architectures:
 - CNN
@@ -240,33 +303,123 @@ Primary architectures:
 - TCN
 - Transformer
 
+Training setup:
+- Full 250-sign dataset
+- Landmark sequences padded/truncated to 96 frames
+- 708 landmark features per frame
+- Data augmentation using temporal stretching, Gaussian noise, and frame dropout
+- Weighted loss functions to reduce class imbalance effects
+- Evaluation using Top-1, Top-5, and Top-10 accuracy
+
+Full training results:
+
+| Model | Test Top-1 | Test Top-5 | Test Top-10 | Parameters | Train Time | Key Finding |
+|---|---:|---:|---:|---:|---:|---|
+| Transformer | **67.95%** | 86.21% | 89.76% | 6,077,690 | 154.77 min | Best overall Top-1 accuracy, but highest training cost |
+| TCN | 66.26% | 85.69% | 90.04% | 1,269,370 | 44.99 min | Strong temporal performance with efficient training |
+| CNN | 65.19% | 86.07% | **90.51%** | 1,269,370 | 43.69 min | Best Top-10 accuracy and strong efficiency |
+| CNN_GRU | 62.97% | 83.65% | 88.52% | 5,548,666 | 133.82 min | Captures temporal dependencies but underperformed relative to simpler models |
+
+Key findings:
+- Transformer achieved the highest Top-1 accuracy, suggesting that global attention helped capture long-range temporal dependencies across sign sequences
+- TCN and CNN performed very competitively while requiring far less training time than Transformer and CNN_GRU models
+- CNN achieved the highest Top-10 accuracy, indicating that it often ranked the correct sign among its top predictions even when Top-1 was incorrect
+- CNN_GRU had the weakest performance among the four full-scale models despite having a large parameter count and long training time
+- The results suggest that convolution-based architectures remained highly effective for landmark-based ASL classification, while Transformer models provided the strongest final accuracy at greater computational cost
+
+Based on these results, Transformer was the best-performing full-scale model by Top-1 accuracy, while CNN and TCN remained attractive options for faster and more efficient deployment.
+
+Outputs generated:
+- Full-dataset model checkpoints
+- Training history logs
+- Ablation comparison tables
+- Classification reports
+- ONNX deployment exports
+
+Outputs are saved into:
+
+models/checkpoints/
+models/logs/
+models/onnx/
+results/graphs/
+results/tables/
+results/reports/
+
 ---
 
 ## 5. Transformer Full Training
 
 Notebook:
-```text
 src/04_Transformer_Full_Training.ipynb
-```
 
-Focused on:
-- Transformer encoder architectures
-- Attention-based temporal modeling
-- CNN + Transformer hybrids
-- ONNX export and deployment preparation
+This notebook focuses on the final Transformer-based training and deployment workflow for the SignBridge ASL recognition system. Unlike the broader full-model comparison in `03_Full_Model_Training.ipynb`, this notebook specifically develops a deeper Transformer V3 architecture with stronger regularization and deployment preparation.
 
----
+The notebook focuses on:
+- Transformer encoder architectures for temporal landmark modeling
+- Attention-based sequence learning across full ASL sign gestures
+- Body-part specific feature projection for pose, left hand, right hand, and face landmarks
+- Positional encoding to preserve temporal frame order
+- ONNX export, quantization, and real-time inference preparation
 
-# Data Augmentation
+Training setup:
+- Full 250-sign SignBridge dataset
+- Landmark sequences padded/truncated to 96 frames
+- 708 landmark features per frame
+- Transformer V3 architecture with 512-dimensional embeddings
+- 8 attention heads and 4 Transformer encoder layers
+- Class-balanced weighted cross-entropy loss
+- Label smoothing of 0.15 for visually similar sign classes
+- AdamW optimizer with weight decay
+- OneCycle learning rate scheduling
+- Early stopping based on validation Top-1 accuracy
 
-The project uses several augmentation methods:
+Transformer V3 architecture highlights:
+- Separate projection heads for pose, left hand, right hand, and face landmark groups
+- Sinusoidal positional encoding for temporal ordering
+- Multi-head self-attention for global sequence-level dependencies
+- Stochastic depth for additional regularization
+- Mean pooling over valid non-padded frames
+- Final classifier head with LayerNorm, GELU activation, and dropout
 
-- Temporal stretching
-- Gaussian landmark noise
-- Random frame dropout
-- Sequence masking
+Transformer V3 results:
 
-These augmentations improve robustness to signer variation and temporal inconsistencies.
+| Metric | Result |
+|---|---:|
+| Validation Top-1 Accuracy | 59.98% |
+| Test Top-1 Accuracy | 68.08% |
+| Test Top-5 Accuracy | 88.91% |
+
+Key findings:
+- Transformer V3 achieved strong test performance, reaching 68.08% Top-1 accuracy and 88.91% Top-5 accuracy across 250 classes
+- The large Top-5 improvement suggests that the model often ranks the correct sign among its highest-confidence predictions, even when the Top-1 prediction is incorrect
+- Training curves show steady reduction in training loss, but validation accuracy plateaus while training accuracy continues increasing, indicating some overfitting
+- The overfitting gap suggests that the Transformer benefits from strong regularization but may still require additional tuning, more augmentation, or earlier stopping
+- The confusion matrix shows that many signs are classified well, but visually similar signs still create confusion, especially when gestures share handshape, motion, or location
+- Body-part specific projection improved the model’s ability to separately represent pose, hands, and facial landmarks before fusing them into the Transformer encoder
+- Compared with simpler CNN/TCN models, the Transformer provides stronger global temporal modeling but comes with higher computational cost and more sensitivity to regularization choices
+
+Deployment preparation:
+- Saved the best Transformer checkpoint
+- Generated training curve visualizations
+- Produced confusion matrix analysis
+- Created a deployment bundle containing model configuration and label mappings
+- Exported the model to ONNX format
+- Explored quantized ONNX export for optimized inference
+
+Outputs generated:
+- Transformer checkpoint
+- Deployment bundle
+- Training curves
+- Confusion matrix
+- ONNX export
+- Quantized ONNX export
+
+Outputs are saved into:
+
+models/checkpoints/
+models/onnx/
+results/graphs/
+results/reports/
 
 ---
 
@@ -278,14 +431,6 @@ Models are evaluated using:
 - Precision / Recall / F1
 - Confusion matrices
 - Per-class accuracy analysis
-
-Outputs are saved into:
-
-```text
-results/reports/
-results/tables/
-results/graphs/
-```
 
 ---
 
@@ -307,7 +452,7 @@ Dynamic quantization was explored for:
 
 ---
 
-# Planned Real-Time Pipeline
+# Real-Time Pipeline (CHANGE)
 
 ```text
 Webcam
