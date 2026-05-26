@@ -154,23 +154,49 @@ The preprocessing pipeline:
 ## 2. Exploratory Data Analysis
 
 Notebook:
-```text
 src/01_EDA.ipynb
-```
 
 EDA includes:
-- Class balance analysis
-- Sequence length visualization
-- Missing value inspection
-- Split validation
-- Landmark feature analysis
+- Dataset dimensionality and split verification
+- Class balance analysis across 250 ASL signs
+- Sequence length distribution visualization
+- Feature mean and standard deviation analysis
+- Missing value and infinity checks
+- Normalization validation
+- Participant-aware split validation
+
+Dataset summary:
+
+| Split | Samples | Sequence Length | Features |
+|-------|---------:|----------------:|----------:|
+| Train | 55,642 | 96 | 708 |
+| Validation | 9,291 | 96 | 708 |
+| Test | 11,826 | 96 | 708 |
+
+Additional statistics:
+- Total classes: 250
+- No NaN values detected across any split
+- No infinite values detected across any split
+- Landmark sequences were padded/truncated to 96 frames
+- Each frame contains 708 landmark features from pose, hand, and facial keypoints
+
+Key findings:
+- Sequence lengths are highly right-skewed, with most signs occurring in shorter sequences while a large number of samples reach the 96-frame padding limit
+- Train, validation, and test distributions remain visually consistent, indicating stable participant-aware splitting
+- Feature standard deviation analysis revealed multiple feature groups with different variability ranges, reflecting differences between hand, pose, and facial landmark movement
+- Normalization successfully standardized the majority of landmark features while preserving temporal variation between signs
+- No missing or corrupted numerical values were detected after preprocessing, confirming dataset integrity before model training
+
+EDA visualizations:
+- Sequence length histograms
+- Feature standard deviation distributions
+- Split distribution comparisons
+- Landmark variability analysis
 
 Outputs are saved into:
 
-```text
 results/graphs/
 results/tables/
-```
 
 ---
 
