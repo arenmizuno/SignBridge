@@ -154,7 +154,9 @@ The preprocessing pipeline:
 ## 2. Exploratory Data Analysis
 
 Notebook:
+```text
 src/01_EDA.ipynb
+```
 
 EDA includes:
 - Dataset dimensionality and split verification
@@ -203,7 +205,9 @@ results/tables/
 ## 3. Partial Dataset Training
 
 Notebook:
+```text
 src/02_Partial_Model_Training.ipynb
+```
 
 This notebook was used as an experimental benchmarking environment before full-scale training on the complete 250-sign dataset.
 
@@ -287,7 +291,9 @@ results/reports/
 ## 4. Full Dataset Training
 
 Notebook:
+```text
 src/03_Full_Model_Training.ipynb
+```
 
 This notebook performs full-scale training on the complete 250-sign SignBridge dataset using the strongest architectures selected from the partial-model experiments.
 
@@ -350,7 +356,9 @@ results/reports/
 ## 5. Transformer Full Training
 
 Notebook:
+```text
 src/04_Transformer_Full_Training.ipynb
+```
 
 This notebook focuses on the final Transformer-based training and deployment workflow for the SignBridge ASL recognition system. Unlike the broader full-model comparison in `03_Full_Model_Training.ipynb`, this notebook specifically develops a deeper Transformer V3 architecture with stronger regularization and deployment preparation.
 
