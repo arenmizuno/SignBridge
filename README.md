@@ -59,6 +59,10 @@ SignBridge/
 │   ├── reports/
 │   └── tables/
 │
+├── signbridge-ui/
+│   ├── model/
+│   ├── signbridge-ui.py
+│
 └── README.md
 ```
 
@@ -464,20 +468,95 @@ Dynamic quantization was explored for:
 # Real-Time Pipeline (CHANGE)
 
 ```text
-Webcam
-   ↓
-OpenCV Frames
-   ↓
-MediaPipe Landmark Extraction
-   ↓
-Landmark Sequence Buffer
-   ↓
-Neural Network Inference
-   ↓
-Predicted Sign
-   ↓
-Live Translation UI
+Webcam Feed
+    ↓
+MediaPipe Holistic  (landmark extraction, per frame)
+    ↓
+Extractor           (feature construction: position + velocity)
+    ↓
+SignCapture         (sign boundary detection)
+    ↓
+ONNX Runtime        (transformer model inference)
+    ↓
+Top-5 Display + TTS (OpenCV overlay + macOS say command)
 ```
+
+---
+
+## Stage 1: Landmark Extraction
+
+Each video frame is passed to **MediaPipe Holistic** (`model_complexity=1`, detection confidence ≥ 0.5, tracking confidence ≥ 0.5), which returns 3D landmark coordinates for the face, left hand, and right hand.
+
+Not all face landmarks are used. We select a subset of **76 face landmarks** that correspond to the lips, nose, and both eyes — the same subset used during training preprocessing. These are defined as:
+
+- **Lips:** 40 landmarks covering the full lip contour
+- **Nose:** 4 landmarks
+- **Right eye:** 16 landmarks
+- **Left eye:** 16 landmarks
+
+Combined with **21 landmarks per hand**, the total is **118 landmarks per frame**, each with x, y, z coordinates in MediaPipe's normalized screen space ([0, 1] for x and y).
+
+If a landmark group is not detected in a given frame (e.g. one hand is off-screen), those slots are filled with `NaN` at extraction time and later converted to `0.0`, matching how missing data was handled in training.
+
+---
+
+## Stage 2: Feature Engineering
+
+From the 118 landmarks, a **354-dimensional position vector** is constructed per frame by concatenating all x coordinates, then all y, then all z, in the order: face → left hand → right hand.
+
+**Right-hand normalization** is applied to make the model invariant to hand position and size. The wrist landmark (index 0) is subtracted from all right-hand landmarks to centre the hand, then all coordinates are divided by the distance from the wrist to the middle finger's MCP joint (landmark 12). This normalization is applied per frame independently.
+
+A **354-dimensional velocity vector** is then computed as the frame-to-frame difference of the position vector (zero for the first frame). Position and velocity are concatenated to form a **708-feature vector per frame**, matching the model's expected input format exactly.
+
+---
+
+## Stage 3: Sign Boundary Detection
+
+A `SignCapture` state machine determines when a complete sign has been made:
+
+- **Capture starts** as soon as either hand is detected in frame
+- **Capture ends** when the hand has been absent for 10 consecutive frames (~0.33s at 30fps), provided at least 10 frames were captured
+- **Maximum length** is capped at 96 frames — if the user keeps their hand in frame for longer, inference is triggered immediately
+- Sequences shorter than 10 frames are discarded as accidental detections
+
+A thumbs-up gesture (detected by checking that the thumb tip is above the thumb base while all other fingers are curled) is used as a control gesture to clear the word stream rather than trigger a sign prediction.
+
+---
+
+## Stage 4: Model Inference
+
+Once a sign is complete, the captured frame sequence is assembled into a `(96, 708)` window tensor, zero-padded if shorter than 96 frames. This is passed to the model along with the true sequence length.
+
+The model (`signbridge_v3.onnx`) is a **transformer-based classifier** trained on 250 ASL words from the ASL Signs Kaggle dataset, using the landmark preprocessing approach from Hoyeol Sohn's 1st place solution. It was exported to **ONNX format** and runs on CPU via **ONNX Runtime**, removing the PyTorch dependency at inference time and making the system lightweight and portable.
+
+The model outputs raw logits over 250 classes. A numerically stable softmax is applied:
+
+```python
+probs = np.exp(logits - logits.max())
+probs /= probs.sum()
+```
+
+The **top-5 predictions** with their confidence scores are returned.
+
+---
+
+## Stage 5: Output
+
+**On-screen display:** The top-5 predictions are shown as a semi-transparent overlay panel in the top-left corner of the video feed, with confidence bars and percentage scores. The top-1 prediction is highlighted in green. A word stream bar at the bottom of the screen accumulates accepted predictions across the session, color-coded by confidence (green ≥ 30%, orange ≥ 10%, red < 10%).
+
+**Text-to-speech:** The top-1 word is spoken aloud using macOS's built-in `say` command, routed to MacBook Pro Speakers to avoid Bluetooth audio routing issues. TTS runs in a background daemon thread so the OpenCV video loop is never blocked.
+
+A word is only added to the stream and spoken if its confidence exceeds 5% (`CONF_THRESHOLD = 0.05`) and it is not a repeat of the previous word.
+
+---
+
+## Known Limitations
+
+**Domain gap.** The model was trained on a fixed set of signers. Users with different hand sizes, signing speeds, camera distances, or lighting conditions may see significantly lower accuracy than the test set numbers suggest. In practice, standing back so the upper body is visible in frame and using good lighting improves results.
+
+**Gap between streaming and video.** Real-time streaming is more challenging than pre-recorded video because boundary-frame noise, camera latency, and inconsistent signing speed shift live inputs away from the clean training distribution.
+
+**Single-word prediction.** The system predicts one sign at a time with no sentence-level context or grammar model applied on top.
 
 ---
 
