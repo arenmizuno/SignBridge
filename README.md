@@ -136,7 +136,7 @@ data/processed/
 
 ---
 
-# Pipeline Overview
+# Model Development Pipeline Overview
 
 ## 1. Preprocessing
 
@@ -465,7 +465,7 @@ Dynamic quantization was explored for:
 
 ---
 
-# Real-Time Pipeline (CHANGE)
+# Application Pipeline
 
 ```text
 Webcam Feed
