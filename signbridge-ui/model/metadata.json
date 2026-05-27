@@ -1,0 +1,1774 @@
+{
+  "vocab": [
+    "TV",
+    "after",
+    "airplane",
+    "all",
+    "alligator",
+    "animal",
+    "another",
+    "any",
+    "apple",
+    "arm",
+    "aunt",
+    "awake",
+    "backyard",
+    "bad",
+    "balloon",
+    "bath",
+    "because",
+    "bed",
+    "bedroom",
+    "bee",
+    "before",
+    "beside",
+    "better",
+    "bird",
+    "black",
+    "blow",
+    "blue",
+    "boat",
+    "book",
+    "boy",
+    "brother",
+    "brown",
+    "bug",
+    "bye",
+    "callonphone",
+    "can",
+    "car",
+    "carrot",
+    "cat",
+    "cereal",
+    "chair",
+    "cheek",
+    "child",
+    "chin",
+    "chocolate",
+    "clean",
+    "close",
+    "closet",
+    "cloud",
+    "clown",
+    "cow",
+    "cowboy",
+    "cry",
+    "cut",
+    "cute",
+    "dad",
+    "dance",
+    "dirty",
+    "dog",
+    "doll",
+    "donkey",
+    "down",
+    "drawer",
+    "drink",
+    "drop",
+    "dry",
+    "dryer",
+    "duck",
+    "ear",
+    "elephant",
+    "empty",
+    "every",
+    "eye",
+    "face",
+    "fall",
+    "farm",
+    "fast",
+    "feet",
+    "find",
+    "fine",
+    "finger",
+    "finish",
+    "fireman",
+    "first",
+    "fish",
+    "flag",
+    "flower",
+    "food",
+    "for",
+    "frenchfries",
+    "frog",
+    "garbage",
+    "gift",
+    "giraffe",
+    "girl",
+    "give",
+    "glasswindow",
+    "go",
+    "goose",
+    "grandma",
+    "grandpa",
+    "grass",
+    "green",
+    "gum",
+    "hair",
+    "happy",
+    "hat",
+    "hate",
+    "have",
+    "haveto",
+    "head",
+    "hear",
+    "helicopter",
+    "hello",
+    "hen",
+    "hesheit",
+    "hide",
+    "high",
+    "home",
+    "horse",
+    "hot",
+    "hungry",
+    "icecream",
+    "if",
+    "into",
+    "jacket",
+    "jeans",
+    "jump",
+    "kiss",
+    "kitty",
+    "lamp",
+    "later",
+    "like",
+    "lion",
+    "lips",
+    "listen",
+    "look",
+    "loud",
+    "mad",
+    "make",
+    "man",
+    "many",
+    "milk",
+    "minemy",
+    "mitten",
+    "mom",
+    "moon",
+    "morning",
+    "mouse",
+    "mouth",
+    "nap",
+    "napkin",
+    "night",
+    "no",
+    "noisy",
+    "nose",
+    "not",
+    "now",
+    "nuts",
+    "old",
+    "on",
+    "open",
+    "orange",
+    "outside",
+    "owie",
+    "owl",
+    "pajamas",
+    "pen",
+    "pencil",
+    "penny",
+    "person",
+    "pig",
+    "pizza",
+    "please",
+    "police",
+    "pool",
+    "potty",
+    "pretend",
+    "pretty",
+    "puppy",
+    "puzzle",
+    "quiet",
+    "radio",
+    "rain",
+    "read",
+    "red",
+    "refrigerator",
+    "ride",
+    "room",
+    "sad",
+    "same",
+    "say",
+    "scissors",
+    "see",
+    "shhh",
+    "shirt",
+    "shoe",
+    "shower",
+    "sick",
+    "sleep",
+    "sleepy",
+    "smile",
+    "snack",
+    "snow",
+    "stairs",
+    "stay",
+    "sticky",
+    "store",
+    "story",
+    "stuck",
+    "sun",
+    "table",
+    "talk",
+    "taste",
+    "thankyou",
+    "that",
+    "there",
+    "think",
+    "thirsty",
+    "tiger",
+    "time",
+    "tomorrow",
+    "tongue",
+    "tooth",
+    "toothbrush",
+    "touch",
+    "toy",
+    "tree",
+    "uncle",
+    "underwear",
+    "up",
+    "vacuum",
+    "wait",
+    "wake",
+    "water",
+    "wet",
+    "weus",
+    "where",
+    "white",
+    "who",
+    "why",
+    "will",
+    "wolf",
+    "yellow",
+    "yes",
+    "yesterday",
+    "yourself",
+    "yucky",
+    "zebra",
+    "zipper"
+  ],
+  "word_to_label": {
+    "TV": 0,
+    "after": 1,
+    "airplane": 2,
+    "all": 3,
+    "alligator": 4,
+    "animal": 5,
+    "another": 6,
+    "any": 7,
+    "apple": 8,
+    "arm": 9,
+    "aunt": 10,
+    "awake": 11,
+    "backyard": 12,
+    "bad": 13,
+    "balloon": 14,
+    "bath": 15,
+    "because": 16,
+    "bed": 17,
+    "bedroom": 18,
+    "bee": 19,
+    "before": 20,
+    "beside": 21,
+    "better": 22,
+    "bird": 23,
+    "black": 24,
+    "blow": 25,
+    "blue": 26,
+    "boat": 27,
+    "book": 28,
+    "boy": 29,
+    "brother": 30,
+    "brown": 31,
+    "bug": 32,
+    "bye": 33,
+    "callonphone": 34,
+    "can": 35,
+    "car": 36,
+    "carrot": 37,
+    "cat": 38,
+    "cereal": 39,
+    "chair": 40,
+    "cheek": 41,
+    "child": 42,
+    "chin": 43,
+    "chocolate": 44,
+    "clean": 45,
+    "close": 46,
+    "closet": 47,
+    "cloud": 48,
+    "clown": 49,
+    "cow": 50,
+    "cowboy": 51,
+    "cry": 52,
+    "cut": 53,
+    "cute": 54,
+    "dad": 55,
+    "dance": 56,
+    "dirty": 57,
+    "dog": 58,
+    "doll": 59,
+    "donkey": 60,
+    "down": 61,
+    "drawer": 62,
+    "drink": 63,
+    "drop": 64,
+    "dry": 65,
+    "dryer": 66,
+    "duck": 67,
+    "ear": 68,
+    "elephant": 69,
+    "empty": 70,
+    "every": 71,
+    "eye": 72,
+    "face": 73,
+    "fall": 74,
+    "farm": 75,
+    "fast": 76,
+    "feet": 77,
+    "find": 78,
+    "fine": 79,
+    "finger": 80,
+    "finish": 81,
+    "fireman": 82,
+    "first": 83,
+    "fish": 84,
+    "flag": 85,
+    "flower": 86,
+    "food": 87,
+    "for": 88,
+    "frenchfries": 89,
+    "frog": 90,
+    "garbage": 91,
+    "gift": 92,
+    "giraffe": 93,
+    "girl": 94,
+    "give": 95,
+    "glasswindow": 96,
+    "go": 97,
+    "goose": 98,
+    "grandma": 99,
+    "grandpa": 100,
+    "grass": 101,
+    "green": 102,
+    "gum": 103,
+    "hair": 104,
+    "happy": 105,
+    "hat": 106,
+    "hate": 107,
+    "have": 108,
+    "haveto": 109,
+    "head": 110,
+    "hear": 111,
+    "helicopter": 112,
+    "hello": 113,
+    "hen": 114,
+    "hesheit": 115,
+    "hide": 116,
+    "high": 117,
+    "home": 118,
+    "horse": 119,
+    "hot": 120,
+    "hungry": 121,
+    "icecream": 122,
+    "if": 123,
+    "into": 124,
+    "jacket": 125,
+    "jeans": 126,
+    "jump": 127,
+    "kiss": 128,
+    "kitty": 129,
+    "lamp": 130,
+    "later": 131,
+    "like": 132,
+    "lion": 133,
+    "lips": 134,
+    "listen": 135,
+    "look": 136,
+    "loud": 137,
+    "mad": 138,
+    "make": 139,
+    "man": 140,
+    "many": 141,
+    "milk": 142,
+    "minemy": 143,
+    "mitten": 144,
+    "mom": 145,
+    "moon": 146,
+    "morning": 147,
+    "mouse": 148,
+    "mouth": 149,
+    "nap": 150,
+    "napkin": 151,
+    "night": 152,
+    "no": 153,
+    "noisy": 154,
+    "nose": 155,
+    "not": 156,
+    "now": 157,
+    "nuts": 158,
+    "old": 159,
+    "on": 160,
+    "open": 161,
+    "orange": 162,
+    "outside": 163,
+    "owie": 164,
+    "owl": 165,
+    "pajamas": 166,
+    "pen": 167,
+    "pencil": 168,
+    "penny": 169,
+    "person": 170,
+    "pig": 171,
+    "pizza": 172,
+    "please": 173,
+    "police": 174,
+    "pool": 175,
+    "potty": 176,
+    "pretend": 177,
+    "pretty": 178,
+    "puppy": 179,
+    "puzzle": 180,
+    "quiet": 181,
+    "radio": 182,
+    "rain": 183,
+    "read": 184,
+    "red": 185,
+    "refrigerator": 186,
+    "ride": 187,
+    "room": 188,
+    "sad": 189,
+    "same": 190,
+    "say": 191,
+    "scissors": 192,
+    "see": 193,
+    "shhh": 194,
+    "shirt": 195,
+    "shoe": 196,
+    "shower": 197,
+    "sick": 198,
+    "sleep": 199,
+    "sleepy": 200,
+    "smile": 201,
+    "snack": 202,
+    "snow": 203,
+    "stairs": 204,
+    "stay": 205,
+    "sticky": 206,
+    "store": 207,
+    "story": 208,
+    "stuck": 209,
+    "sun": 210,
+    "table": 211,
+    "talk": 212,
+    "taste": 213,
+    "thankyou": 214,
+    "that": 215,
+    "there": 216,
+    "think": 217,
+    "thirsty": 218,
+    "tiger": 219,
+    "time": 220,
+    "tomorrow": 221,
+    "tongue": 222,
+    "tooth": 223,
+    "toothbrush": 224,
+    "touch": 225,
+    "toy": 226,
+    "tree": 227,
+    "uncle": 228,
+    "underwear": 229,
+    "up": 230,
+    "vacuum": 231,
+    "wait": 232,
+    "wake": 233,
+    "water": 234,
+    "wet": 235,
+    "weus": 236,
+    "where": 237,
+    "white": 238,
+    "who": 239,
+    "why": 240,
+    "will": 241,
+    "wolf": 242,
+    "yellow": 243,
+    "yes": 244,
+    "yesterday": 245,
+    "yourself": 246,
+    "yucky": 247,
+    "zebra": 248,
+    "zipper": 249
+  },
+  "label_to_word": {
+    "0": "TV",
+    "1": "after",
+    "2": "airplane",
+    "3": "all",
+    "4": "alligator",
+    "5": "animal",
+    "6": "another",
+    "7": "any",
+    "8": "apple",
+    "9": "arm",
+    "10": "aunt",
+    "11": "awake",
+    "12": "backyard",
+    "13": "bad",
+    "14": "balloon",
+    "15": "bath",
+    "16": "because",
+    "17": "bed",
+    "18": "bedroom",
+    "19": "bee",
+    "20": "before",
+    "21": "beside",
+    "22": "better",
+    "23": "bird",
+    "24": "black",
+    "25": "blow",
+    "26": "blue",
+    "27": "boat",
+    "28": "book",
+    "29": "boy",
+    "30": "brother",
+    "31": "brown",
+    "32": "bug",
+    "33": "bye",
+    "34": "callonphone",
+    "35": "can",
+    "36": "car",
+    "37": "carrot",
+    "38": "cat",
+    "39": "cereal",
+    "40": "chair",
+    "41": "cheek",
+    "42": "child",
+    "43": "chin",
+    "44": "chocolate",
+    "45": "clean",
+    "46": "close",
+    "47": "closet",
+    "48": "cloud",
+    "49": "clown",
+    "50": "cow",
+    "51": "cowboy",
+    "52": "cry",
+    "53": "cut",
+    "54": "cute",
+    "55": "dad",
+    "56": "dance",
+    "57": "dirty",
+    "58": "dog",
+    "59": "doll",
+    "60": "donkey",
+    "61": "down",
+    "62": "drawer",
+    "63": "drink",
+    "64": "drop",
+    "65": "dry",
+    "66": "dryer",
+    "67": "duck",
+    "68": "ear",
+    "69": "elephant",
+    "70": "empty",
+    "71": "every",
+    "72": "eye",
+    "73": "face",
+    "74": "fall",
+    "75": "farm",
+    "76": "fast",
+    "77": "feet",
+    "78": "find",
+    "79": "fine",
+    "80": "finger",
+    "81": "finish",
+    "82": "fireman",
+    "83": "first",
+    "84": "fish",
+    "85": "flag",
+    "86": "flower",
+    "87": "food",
+    "88": "for",
+    "89": "frenchfries",
+    "90": "frog",
+    "91": "garbage",
+    "92": "gift",
+    "93": "giraffe",
+    "94": "girl",
+    "95": "give",
+    "96": "glasswindow",
+    "97": "go",
+    "98": "goose",
+    "99": "grandma",
+    "100": "grandpa",
+    "101": "grass",
+    "102": "green",
+    "103": "gum",
+    "104": "hair",
+    "105": "happy",
+    "106": "hat",
+    "107": "hate",
+    "108": "have",
+    "109": "haveto",
+    "110": "head",
+    "111": "hear",
+    "112": "helicopter",
+    "113": "hello",
+    "114": "hen",
+    "115": "hesheit",
+    "116": "hide",
+    "117": "high",
+    "118": "home",
+    "119": "horse",
+    "120": "hot",
+    "121": "hungry",
+    "122": "icecream",
+    "123": "if",
+    "124": "into",
+    "125": "jacket",
+    "126": "jeans",
+    "127": "jump",
+    "128": "kiss",
+    "129": "kitty",
+    "130": "lamp",
+    "131": "later",
+    "132": "like",
+    "133": "lion",
+    "134": "lips",
+    "135": "listen",
+    "136": "look",
+    "137": "loud",
+    "138": "mad",
+    "139": "make",
+    "140": "man",
+    "141": "many",
+    "142": "milk",
+    "143": "minemy",
+    "144": "mitten",
+    "145": "mom",
+    "146": "moon",
+    "147": "morning",
+    "148": "mouse",
+    "149": "mouth",
+    "150": "nap",
+    "151": "napkin",
+    "152": "night",
+    "153": "no",
+    "154": "noisy",
+    "155": "nose",
+    "156": "not",
+    "157": "now",
+    "158": "nuts",
+    "159": "old",
+    "160": "on",
+    "161": "open",
+    "162": "orange",
+    "163": "outside",
+    "164": "owie",
+    "165": "owl",
+    "166": "pajamas",
+    "167": "pen",
+    "168": "pencil",
+    "169": "penny",
+    "170": "person",
+    "171": "pig",
+    "172": "pizza",
+    "173": "please",
+    "174": "police",
+    "175": "pool",
+    "176": "potty",
+    "177": "pretend",
+    "178": "pretty",
+    "179": "puppy",
+    "180": "puzzle",
+    "181": "quiet",
+    "182": "radio",
+    "183": "rain",
+    "184": "read",
+    "185": "red",
+    "186": "refrigerator",
+    "187": "ride",
+    "188": "room",
+    "189": "sad",
+    "190": "same",
+    "191": "say",
+    "192": "scissors",
+    "193": "see",
+    "194": "shhh",
+    "195": "shirt",
+    "196": "shoe",
+    "197": "shower",
+    "198": "sick",
+    "199": "sleep",
+    "200": "sleepy",
+    "201": "smile",
+    "202": "snack",
+    "203": "snow",
+    "204": "stairs",
+    "205": "stay",
+    "206": "sticky",
+    "207": "store",
+    "208": "story",
+    "209": "stuck",
+    "210": "sun",
+    "211": "table",
+    "212": "talk",
+    "213": "taste",
+    "214": "thankyou",
+    "215": "that",
+    "216": "there",
+    "217": "think",
+    "218": "thirsty",
+    "219": "tiger",
+    "220": "time",
+    "221": "tomorrow",
+    "222": "tongue",
+    "223": "tooth",
+    "224": "toothbrush",
+    "225": "touch",
+    "226": "toy",
+    "227": "tree",
+    "228": "uncle",
+    "229": "underwear",
+    "230": "up",
+    "231": "vacuum",
+    "232": "wait",
+    "233": "wake",
+    "234": "water",
+    "235": "wet",
+    "236": "weus",
+    "237": "where",
+    "238": "white",
+    "239": "who",
+    "240": "why",
+    "241": "will",
+    "242": "wolf",
+    "243": "yellow",
+    "244": "yes",
+    "245": "yesterday",
+    "246": "yourself",
+    "247": "yucky",
+    "248": "zebra",
+    "249": "zipper"
+  },
+  "max_seq_len": 96,
+  "min_frames": 10,
+  "n_features": 708,
+  "n_features_pos": 354,
+  "n_features_vel": 354,
+  "n_landmarks": 118,
+  "n_words": 250,
+  "n_train": 35951,
+  "n_val": 2385,
+  "n_test": 1764,
+  "n_skipped": 54377,
+  "val_participant": 37779,
+  "test_participant": 30680,
+  "landmark_source": "Hoyeol Sohn 1st place asl-signs 2023",
+  "sign_stats": {
+    "TV": {
+      "ok": 146,
+      "skip": 239
+    },
+    "after": {
+      "ok": 94,
+      "skip": 253
+    },
+    "airplane": {
+      "ok": 188,
+      "skip": 205
+    },
+    "all": {
+      "ok": 158,
+      "skip": 228
+    },
+    "alligator": {
+      "ok": 179,
+      "skip": 211
+    },
+    "animal": {
+      "ok": 141,
+      "skip": 207
+    },
+    "another": {
+      "ok": 129,
+      "skip": 241
+    },
+    "any": {
+      "ok": 120,
+      "skip": 235
+    },
+    "apple": {
+      "ok": 175,
+      "skip": 202
+    },
+    "arm": {
+      "ok": 122,
+      "skip": 240
+    },
+    "aunt": {
+      "ok": 214,
+      "skip": 177
+    },
+    "awake": {
+      "ok": 198,
+      "skip": 203
+    },
+    "backyard": {
+      "ok": 148,
+      "skip": 224
+    },
+    "bad": {
+      "ok": 108,
+      "skip": 268
+    },
+    "balloon": {
+      "ok": 190,
+      "skip": 203
+    },
+    "bath": {
+      "ok": 145,
+      "skip": 206
+    },
+    "because": {
+      "ok": 171,
+      "skip": 224
+    },
+    "bed": {
+      "ok": 162,
+      "skip": 191
+    },
+    "bedroom": {
+      "ok": 179,
+      "skip": 209
+    },
+    "bee": {
+      "ok": 169,
+      "skip": 226
+    },
+    "before": {
+      "ok": 141,
+      "skip": 213
+    },
+    "beside": {
+      "ok": 79,
+      "skip": 231
+    },
+    "better": {
+      "ok": 141,
+      "skip": 235
+    },
+    "bird": {
+      "ok": 209,
+      "skip": 195
+    },
+    "black": {
+      "ok": 147,
+      "skip": 241
+    },
+    "blow": {
+      "ok": 131,
+      "skip": 260
+    },
+    "blue": {
+      "ok": 127,
+      "skip": 235
+    },
+    "boat": {
+      "ok": 149,
+      "skip": 221
+    },
+    "book": {
+      "ok": 126,
+      "skip": 242
+    },
+    "boy": {
+      "ok": 191,
+      "skip": 191
+    },
+    "brother": {
+      "ok": 155,
+      "skip": 240
+    },
+    "brown": {
+      "ok": 218,
+      "skip": 185
+    },
+    "bug": {
+      "ok": 191,
+      "skip": 196
+    },
+    "bye": {
+      "ok": 188,
+      "skip": 214
+    },
+    "callonphone": {
+      "ok": 157,
+      "skip": 228
+    },
+    "can": {
+      "ok": 111,
+      "skip": 255
+    },
+    "car": {
+      "ok": 142,
+      "skip": 211
+    },
+    "carrot": {
+      "ok": 192,
+      "skip": 194
+    },
+    "cat": {
+      "ok": 182,
+      "skip": 218
+    },
+    "cereal": {
+      "ok": 165,
+      "skip": 214
+    },
+    "chair": {
+      "ok": 133,
+      "skip": 235
+    },
+    "cheek": {
+      "ok": 190,
+      "skip": 185
+    },
+    "child": {
+      "ok": 123,
+      "skip": 225
+    },
+    "chin": {
+      "ok": 158,
+      "skip": 188
+    },
+    "chocolate": {
+      "ok": 187,
+      "skip": 199
+    },
+    "clean": {
+      "ok": 118,
+      "skip": 237
+    },
+    "close": {
+      "ok": 140,
+      "skip": 234
+    },
+    "closet": {
+      "ok": 194,
+      "skip": 199
+    },
+    "cloud": {
+      "ok": 172,
+      "skip": 206
+    },
+    "clown": {
+      "ok": 215,
+      "skip": 173
+    },
+    "cow": {
+      "ok": 211,
+      "skip": 193
+    },
+    "cowboy": {
+      "ok": 178,
+      "skip": 200
+    },
+    "cry": {
+      "ok": 191,
+      "skip": 199
+    },
+    "cut": {
+      "ok": 134,
+      "skip": 235
+    },
+    "cute": {
+      "ok": 175,
+      "skip": 207
+    },
+    "dad": {
+      "ok": 193,
+      "skip": 185
+    },
+    "dance": {
+      "ok": 92,
+      "skip": 220
+    },
+    "dirty": {
+      "ok": 175,
+      "skip": 190
+    },
+    "dog": {
+      "ok": 151,
+      "skip": 229
+    },
+    "doll": {
+      "ok": 228,
+      "skip": 172
+    },
+    "donkey": {
+      "ok": 218,
+      "skip": 192
+    },
+    "down": {
+      "ok": 64,
+      "skip": 263
+    },
+    "drawer": {
+      "ok": 156,
+      "skip": 217
+    },
+    "drink": {
+      "ok": 194,
+      "skip": 206
+    },
+    "drop": {
+      "ok": 86,
+      "skip": 270
+    },
+    "dry": {
+      "ok": 173,
+      "skip": 218
+    },
+    "dryer": {
+      "ok": 164,
+      "skip": 205
+    },
+    "duck": {
+      "ok": 208,
+      "skip": 197
+    },
+    "ear": {
+      "ok": 212,
+      "skip": 177
+    },
+    "elephant": {
+      "ok": 110,
+      "skip": 272
+    },
+    "empty": {
+      "ok": 109,
+      "skip": 263
+    },
+    "every": {
+      "ok": 136,
+      "skip": 232
+    },
+    "eye": {
+      "ok": 187,
+      "skip": 208
+    },
+    "face": {
+      "ok": 147,
+      "skip": 223
+    },
+    "fall": {
+      "ok": 112,
+      "skip": 270
+    },
+    "farm": {
+      "ok": 183,
+      "skip": 214
+    },
+    "fast": {
+      "ok": 163,
+      "skip": 199
+    },
+    "feet": {
+      "ok": 145,
+      "skip": 227
+    },
+    "find": {
+      "ok": 166,
+      "skip": 231
+    },
+    "fine": {
+      "ok": 136,
+      "skip": 224
+    },
+    "finger": {
+      "ok": 190,
+      "skip": 189
+    },
+    "finish": {
+      "ok": 168,
+      "skip": 220
+    },
+    "fireman": {
+      "ok": 202,
+      "skip": 200
+    },
+    "first": {
+      "ok": 169,
+      "skip": 229
+    },
+    "fish": {
+      "ok": 143,
+      "skip": 237
+    },
+    "flag": {
+      "ok": 163,
+      "skip": 223
+    },
+    "flower": {
+      "ok": 212,
+      "skip": 184
+    },
+    "food": {
+      "ok": 192,
+      "skip": 200
+    },
+    "for": {
+      "ok": 148,
+      "skip": 236
+    },
+    "frenchfries": {
+      "ok": 170,
+      "skip": 214
+    },
+    "frog": {
+      "ok": 199,
+      "skip": 197
+    },
+    "garbage": {
+      "ok": 162,
+      "skip": 209
+    },
+    "gift": {
+      "ok": 150,
+      "skip": 243
+    },
+    "giraffe": {
+      "ok": 147,
+      "skip": 235
+    },
+    "girl": {
+      "ok": 166,
+      "skip": 212
+    },
+    "give": {
+      "ok": 107,
+      "skip": 239
+    },
+    "glasswindow": {
+      "ok": 195,
+      "skip": 195
+    },
+    "go": {
+      "ok": 104,
+      "skip": 284
+    },
+    "goose": {
+      "ok": 187,
+      "skip": 207
+    },
+    "grandma": {
+      "ok": 127,
+      "skip": 255
+    },
+    "grandpa": {
+      "ok": 157,
+      "skip": 230
+    },
+    "grass": {
+      "ok": 197,
+      "skip": 189
+    },
+    "green": {
+      "ok": 147,
+      "skip": 235
+    },
+    "gum": {
+      "ok": 200,
+      "skip": 190
+    },
+    "hair": {
+      "ok": 191,
+      "skip": 194
+    },
+    "happy": {
+      "ok": 189,
+      "skip": 190
+    },
+    "hat": {
+      "ok": 103,
+      "skip": 239
+    },
+    "hate": {
+      "ok": 94,
+      "skip": 264
+    },
+    "have": {
+      "ok": 125,
+      "skip": 212
+    },
+    "haveto": {
+      "ok": 98,
+      "skip": 250
+    },
+    "head": {
+      "ok": 140,
+      "skip": 246
+    },
+    "hear": {
+      "ok": 198,
+      "skip": 207
+    },
+    "helicopter": {
+      "ok": 151,
+      "skip": 228
+    },
+    "hello": {
+      "ok": 148,
+      "skip": 242
+    },
+    "hen": {
+      "ok": 192,
+      "skip": 185
+    },
+    "hesheit": {
+      "ok": 163,
+      "skip": 194
+    },
+    "hide": {
+      "ok": 130,
+      "skip": 233
+    },
+    "high": {
+      "ok": 135,
+      "skip": 240
+    },
+    "home": {
+      "ok": 200,
+      "skip": 195
+    },
+    "horse": {
+      "ok": 212,
+      "skip": 179
+    },
+    "hot": {
+      "ok": 115,
+      "skip": 268
+    },
+    "hungry": {
+      "ok": 106,
+      "skip": 279
+    },
+    "icecream": {
+      "ok": 212,
+      "skip": 186
+    },
+    "if": {
+      "ok": 150,
+      "skip": 216
+    },
+    "into": {
+      "ok": 120,
+      "skip": 244
+    },
+    "jacket": {
+      "ok": 133,
+      "skip": 203
+    },
+    "jeans": {
+      "ok": 143,
+      "skip": 239
+    },
+    "jump": {
+      "ok": 137,
+      "skip": 246
+    },
+    "kiss": {
+      "ok": 164,
+      "skip": 232
+    },
+    "kitty": {
+      "ok": 185,
+      "skip": 204
+    },
+    "lamp": {
+      "ok": 164,
+      "skip": 206
+    },
+    "later": {
+      "ok": 138,
+      "skip": 239
+    },
+    "like": {
+      "ok": 115,
+      "skip": 261
+    },
+    "lion": {
+      "ok": 180,
+      "skip": 212
+    },
+    "lips": {
+      "ok": 215,
+      "skip": 187
+    },
+    "listen": {
+      "ok": 224,
+      "skip": 191
+    },
+    "look": {
+      "ok": 182,
+      "skip": 232
+    },
+    "loud": {
+      "ok": 171,
+      "skip": 218
+    },
+    "mad": {
+      "ok": 177,
+      "skip": 215
+    },
+    "make": {
+      "ok": 180,
+      "skip": 218
+    },
+    "man": {
+      "ok": 162,
+      "skip": 230
+    },
+    "many": {
+      "ok": 136,
+      "skip": 241
+    },
+    "milk": {
+      "ok": 169,
+      "skip": 208
+    },
+    "minemy": {
+      "ok": 199,
+      "skip": 177
+    },
+    "mitten": {
+      "ok": 185,
+      "skip": 192
+    },
+    "mom": {
+      "ok": 184,
+      "skip": 211
+    },
+    "moon": {
+      "ok": 163,
+      "skip": 217
+    },
+    "morning": {
+      "ok": 150,
+      "skip": 222
+    },
+    "mouse": {
+      "ok": 222,
+      "skip": 186
+    },
+    "mouth": {
+      "ok": 185,
+      "skip": 206
+    },
+    "nap": {
+      "ok": 171,
+      "skip": 220
+    },
+    "napkin": {
+      "ok": 193,
+      "skip": 205
+    },
+    "night": {
+      "ok": 97,
+      "skip": 239
+    },
+    "no": {
+      "ok": 130,
+      "skip": 240
+    },
+    "noisy": {
+      "ok": 134,
+      "skip": 227
+    },
+    "nose": {
+      "ok": 182,
+      "skip": 200
+    },
+    "not": {
+      "ok": 98,
+      "skip": 279
+    },
+    "now": {
+      "ok": 120,
+      "skip": 249
+    },
+    "nuts": {
+      "ok": 197,
+      "skip": 205
+    },
+    "old": {
+      "ok": 142,
+      "skip": 247
+    },
+    "on": {
+      "ok": 133,
+      "skip": 235
+    },
+    "open": {
+      "ok": 126,
+      "skip": 228
+    },
+    "orange": {
+      "ok": 202,
+      "skip": 188
+    },
+    "outside": {
+      "ok": 154,
+      "skip": 232
+    },
+    "owie": {
+      "ok": 152,
+      "skip": 213
+    },
+    "owl": {
+      "ok": 216,
+      "skip": 180
+    },
+    "pajamas": {
+      "ok": 175,
+      "skip": 214
+    },
+    "pen": {
+      "ok": 170,
+      "skip": 229
+    },
+    "pencil": {
+      "ok": 159,
+      "skip": 233
+    },
+    "penny": {
+      "ok": 147,
+      "skip": 243
+    },
+    "person": {
+      "ok": 90,
+      "skip": 222
+    },
+    "pig": {
+      "ok": 175,
+      "skip": 193
+    },
+    "pizza": {
+      "ok": 192,
+      "skip": 204
+    },
+    "please": {
+      "ok": 204,
+      "skip": 180
+    },
+    "police": {
+      "ok": 215,
+      "skip": 173
+    },
+    "pool": {
+      "ok": 145,
+      "skip": 218
+    },
+    "potty": {
+      "ok": 155,
+      "skip": 196
+    },
+    "pretend": {
+      "ok": 176,
+      "skip": 228
+    },
+    "pretty": {
+      "ok": 157,
+      "skip": 235
+    },
+    "puppy": {
+      "ok": 159,
+      "skip": 198
+    },
+    "puzzle": {
+      "ok": 111,
+      "skip": 231
+    },
+    "quiet": {
+      "ok": 89,
+      "skip": 269
+    },
+    "radio": {
+      "ok": 202,
+      "skip": 185
+    },
+    "rain": {
+      "ok": 153,
+      "skip": 228
+    },
+    "read": {
+      "ok": 111,
+      "skip": 251
+    },
+    "red": {
+      "ok": 184,
+      "skip": 195
+    },
+    "refrigerator": {
+      "ok": 169,
+      "skip": 194
+    },
+    "ride": {
+      "ok": 94,
+      "skip": 253
+    },
+    "room": {
+      "ok": 144,
+      "skip": 228
+    },
+    "sad": {
+      "ok": 192,
+      "skip": 199
+    },
+    "same": {
+      "ok": 156,
+      "skip": 224
+    },
+    "say": {
+      "ok": 161,
+      "skip": 216
+    },
+    "scissors": {
+      "ok": 143,
+      "skip": 226
+    },
+    "see": {
+      "ok": 164,
+      "skip": 224
+    },
+    "shhh": {
+      "ok": 235,
+      "skip": 176
+    },
+    "shirt": {
+      "ok": 146,
+      "skip": 206
+    },
+    "shoe": {
+      "ok": 140,
+      "skip": 224
+    },
+    "shower": {
+      "ok": 156,
+      "skip": 216
+    },
+    "sick": {
+      "ok": 162,
+      "skip": 218
+    },
+    "sleep": {
+      "ok": 160,
+      "skip": 220
+    },
+    "sleepy": {
+      "ok": 195,
+      "skip": 208
+    },
+    "smile": {
+      "ok": 164,
+      "skip": 212
+    },
+    "snack": {
+      "ok": 181,
+      "skip": 200
+    },
+    "snow": {
+      "ok": 176,
+      "skip": 210
+    },
+    "stairs": {
+      "ok": 175,
+      "skip": 207
+    },
+    "stay": {
+      "ok": 116,
+      "skip": 260
+    },
+    "sticky": {
+      "ok": 135,
+      "skip": 214
+    },
+    "store": {
+      "ok": 144,
+      "skip": 230
+    },
+    "story": {
+      "ok": 159,
+      "skip": 210
+    },
+    "stuck": {
+      "ok": 159,
+      "skip": 187
+    },
+    "sun": {
+      "ok": 186,
+      "skip": 203
+    },
+    "table": {
+      "ok": 123,
+      "skip": 214
+    },
+    "talk": {
+      "ok": 205,
+      "skip": 189
+    },
+    "taste": {
+      "ok": 201,
+      "skip": 191
+    },
+    "thankyou": {
+      "ok": 101,
+      "skip": 256
+    },
+    "that": {
+      "ok": 116,
+      "skip": 265
+    },
+    "there": {
+      "ok": 123,
+      "skip": 240
+    },
+    "think": {
+      "ok": 198,
+      "skip": 201
+    },
+    "thirsty": {
+      "ok": 168,
+      "skip": 192
+    },
+    "tiger": {
+      "ok": 204,
+      "skip": 190
+    },
+    "time": {
+      "ok": 126,
+      "skip": 237
+    },
+    "tomorrow": {
+      "ok": 148,
+      "skip": 240
+    },
+    "tongue": {
+      "ok": 183,
+      "skip": 191
+    },
+    "tooth": {
+      "ok": 191,
+      "skip": 202
+    },
+    "toothbrush": {
+      "ok": 173,
+      "skip": 229
+    },
+    "touch": {
+      "ok": 137,
+      "skip": 235
+    },
+    "toy": {
+      "ok": 176,
+      "skip": 202
+    },
+    "tree": {
+      "ok": 180,
+      "skip": 202
+    },
+    "uncle": {
+      "ok": 216,
+      "skip": 189
+    },
+    "underwear": {
+      "ok": 186,
+      "skip": 187
+    },
+    "up": {
+      "ok": 180,
+      "skip": 214
+    },
+    "vacuum": {
+      "ok": 95,
+      "skip": 212
+    },
+    "wait": {
+      "ok": 142,
+      "skip": 204
+    },
+    "wake": {
+      "ok": 191,
+      "skip": 210
+    },
+    "water": {
+      "ok": 197,
+      "skip": 187
+    },
+    "wet": {
+      "ok": 121,
+      "skip": 261
+    },
+    "weus": {
+      "ok": 152,
+      "skip": 219
+    },
+    "where": {
+      "ok": 156,
+      "skip": 216
+    },
+    "white": {
+      "ok": 141,
+      "skip": 229
+    },
+    "who": {
+      "ok": 216,
+      "skip": 187
+    },
+    "why": {
+      "ok": 148,
+      "skip": 216
+    },
+    "will": {
+      "ok": 126,
+      "skip": 243
+    },
+    "wolf": {
+      "ok": 151,
+      "skip": 237
+    },
+    "yellow": {
+      "ok": 171,
+      "skip": 213
+    },
+    "yes": {
+      "ok": 168,
+      "skip": 218
+    },
+    "yesterday": {
+      "ok": 221,
+      "skip": 177
+    },
+    "yourself": {
+      "ok": 157,
+      "skip": 228
+    },
+    "yucky": {
+      "ok": 178,
+      "skip": 201
+    },
+    "zebra": {
+      "ok": 169,
+      "skip": 206
+    },
+    "zipper": {
+      "ok": 95,
+      "skip": 204
+    }
+  }
+}
