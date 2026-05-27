@@ -144,17 +144,65 @@ Notebook:
 ```text
 src/00_Preprocessing.ipynb
 ```
-The preprocessing pipeline converts the raw Kaggle ASL Signs landmark data into fixed-size numerical sequences that can be used for model training.
+The preprocessing pipeline prepares the raw Kaggle ASL Signs landmark data for model training by converting each signing sequence into a clean, fixed-size numerical input.
 
-The raw dataset contains frame-by-frame MediaPipe landmark coordinates for each signing sequence. Each sample is first loaded from its corresponding parquet file, then filtered to keep only the most relevant landmarks for sign recognition. Instead of using every available landmark, the pipeline focuses on key facial landmarks, especially around the mouth and eyes, along with both left and right hand landmarks. This reduces noise while preserving the features most important for ASL classification.
+### Key preprocessing steps
 
-Each sequence is transformed from a long landmark format into a wide frame-based format, where every row represents a video frame and every column represents a specific landmark coordinate. Missing landmark values are handled using interpolation, forward filling, and backward filling so that short tracking gaps do not remove otherwise useful samples. Sequences with too many missing hand detections are discarded because they do not contain enough reliable signing information.
+- **Load raw landmark data**
+  - Reads the Kaggle ASL Signs metadata from `train.csv`
+  - Loads each signing sequence from its corresponding parquet file
+  - Extracts the sign label, sequence ID, participant ID, and file path
 
-The preprocessing step also normalizes hand positions to reduce variation between different signers, camera positions, and signing locations. In particular, hand landmarks are centered relative to the wrist and scaled by hand size, making the model focus more on hand shape and motion rather than absolute screen position.
+- **Create label mappings**
+  - Builds a vocabulary of all 250 ASL sign classes
+  - Converts each sign word into a numeric class label
+  - Saves mappings for training, evaluation, and inference
 
-To ensure all inputs have the same shape, each sequence is standardized to a fixed length of 96 frames. Longer sequences are center-cropped, while shorter sequences are padded. The pipeline also computes velocity features by taking frame-to-frame differences, allowing the model to learn both static landmark positions and motion patterns over time.
+- **Select important landmarks**
+  - Keeps the most relevant landmarks for sign recognition
+  - Uses both left and right hand landmarks
+  - Includes selected face landmarks around the mouth, nose, and eyes
+  - Reduces unnecessary landmark noise while preserving signing information
 
-Finally, the processed features, labels, sequence lengths, class mappings, normalization statistics, and metadata are saved as reusable files. These outputs are used directly by the training notebooks, ensuring that the model receives clean, consistent, and deployment-ready input data.
+- **Reshape each sequence**
+  - Converts landmark data from long format into a frame-based wide format
+  - Each row represents one frame
+  - Each column represents a specific landmark coordinate
+
+- **Handle missing values**
+  - Fills short gaps in landmark tracking using interpolation
+  - Applies forward fill and backward fill when needed
+  - Removes sequences where too much hand data is missing
+
+- **Normalize hand landmarks**
+  - Centers hand coordinates relative to the wrist
+  - Scales hand landmarks based on hand size
+  - Helps reduce differences caused by signer position, camera distance, and body size
+
+- **Standardize sequence length**
+  - Converts all samples to a fixed length of 96 frames
+  - Center-crops sequences that are too long
+  - Pads sequences that are too short
+
+- **Add motion features**
+  - Computes frame-to-frame velocity features
+  - Combines position and motion information
+  - Helps the model learn both hand shape and signing movement
+
+- **Save processed outputs**
+  - Saves processed feature arrays
+  - Saves labels and sequence lengths
+  - Saves class mappings, normalization statistics, and metadata
+  - Outputs are reused directly by the model training notebooks
+
+### Final output format
+
+Each processed sample is represented as a fixed-size sequence:
+
+- **96 frames per sample**
+- **Position features for selected landmarks**
+- **Velocity features for motion**
+- **Numeric label corresponding to one of 250 ASL signs**
 
 ---
 
