@@ -61,7 +61,7 @@ SignBridge/
 │
 ├── signbridge-ui/
 │   ├── model/
-│   ├── signbridge-ui.py
+│   └── signbridge-ui.py
 │
 └── README.md
 ```
