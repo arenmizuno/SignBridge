@@ -422,34 +422,61 @@ src/04_Transformer_Full_Training.ipynb
 
 This notebook focuses on the final Transformer-based training and deployment workflow for the SignBridge ASL recognition system. Unlike the broader full-model comparison in `03_Full_Model_Training.ipynb`, this notebook specifically develops a deeper Transformer V3 architecture with stronger regularization and deployment preparation.
 
-The notebook focuses on:
-- Transformer encoder architectures for temporal landmark modeling
-- Attention-based sequence learning across full ASL sign gestures
-- Body-part specific feature projection for pose, left hand, right hand, and face landmarks
-- Positional encoding to preserve temporal frame order
-- ONNX export, quantization, and real-time inference preparation
+### Model overview
 
-Training setup:
-- Full 250-sign SignBridge dataset
-- Landmark sequences padded/truncated to 96 frames
-- 708 landmark features per frame
-- Transformer V3 architecture with 512-dimensional embeddings
-- 8 attention heads and 4 Transformer encoder layers
-- Class-balanced weighted cross-entropy loss
-- Label smoothing of 0.15 for visually similar sign classes
-- AdamW optimizer with weight decay
-- OneCycle learning rate scheduling
-- Early stopping based on validation Top-1 accuracy
+* Trains the final SignBridge Transformer model on the full ASL landmark dataset
+* Uses preprocessed landmark sequences as model input
+* Each input sample contains:
 
-Transformer V3 architecture highlights:
-- Separate projection heads for pose, left hand, right hand, and face landmark groups
-- Sinusoidal positional encoding for temporal ordering
-- Multi-head self-attention for global sequence-level dependencies
-- Stochastic depth for additional regularization
-- Mean pooling over valid non-padded frames
-- Final classifier head with LayerNorm, GELU activation, and dropout
+  * 96 frames per signing sequence
+  * 708 features per frame
+  * Position features from selected landmarks
+  * Velocity features from frame-to-frame motion
+* Designed to classify each sequence into one of 250 ASL sign categories
 
-Transformer V3 results:
+### Transformer V3 architecture
+
+* Uses a Transformer-based sequence model for temporal landmark recognition
+* Separates the input features into body-part-specific streams:
+
+  * Pose landmarks
+  * Left hand landmarks
+  * Right hand landmarks
+  * Face landmarks
+* Projects each body-part group into its own learned embedding
+* Combines the separate embeddings into one shared sequence representation
+* Adds positional encoding so the model can understand the order of frames
+* Passes the sequence through Transformer encoder layers to learn relationships across time
+* Uses multi-head self-attention so the model can focus on the most important frames and body parts for each sign
+
+### Architecture details
+
+* Transformer V3 model architecture
+* 512-dimensional embeddings
+* 8 attention heads
+* 4 Transformer encoder layers
+* Mean pooling over valid, non-padded frames
+* Final classifier head for 250 ASL sign classes
+* Classifier includes normalization, nonlinear activation, and dropout for regularization
+
+### Training strategy
+
+* Uses the full 250-sign SignBridge dataset
+* Trains on fixed-length landmark sequences padded or truncated to 96 frames
+* Uses weighted cross-entropy loss to help with class imbalance
+* Applies label smoothing to improve learning for visually similar signs
+* Uses the AdamW optimizer with weight decay
+* Uses OneCycle learning rate scheduling
+* Applies strong regularization, including:
+
+  * Dropout
+  * Stochastic depth
+  * Gradient clipping
+  * Data augmentation
+* Saves the best model checkpoint based on validation Top-1 accuracy
+* Uses early stopping when validation performance stops improving
+
+### Transformer V3 results:
 
 | Metric | Result |
 |---|---:|
@@ -457,7 +484,7 @@ Transformer V3 results:
 | Test Top-1 Accuracy | 68.08% |
 | Test Top-5 Accuracy | 88.91% |
 
-Key findings:
+### Key findings:
 - Transformer V3 achieved strong test performance, reaching 68.08% Top-1 accuracy and 88.91% Top-5 accuracy across 250 classes
 - The large Top-5 improvement suggests that the model often ranks the correct sign among its highest-confidence predictions, even when the Top-1 prediction is incorrect
 - Training curves show steady reduction in training loss, but validation accuracy plateaus while training accuracy continues increasing, indicating some overfitting
@@ -466,7 +493,7 @@ Key findings:
 - Body-part specific projection improved the model’s ability to separately represent pose, hands, and facial landmarks before fusing them into the Transformer encoder
 - Compared with simpler CNN/TCN models, the Transformer provides stronger global temporal modeling but comes with higher computational cost and more sensitivity to regularization choices
 
-Deployment preparation:
+### Deployment preparation:
 - Saved the best Transformer checkpoint
 - Generated training curve visualizations
 - Produced confusion matrix analysis
